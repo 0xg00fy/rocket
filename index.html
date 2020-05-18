@@ -1,14 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
-
+    <title>Rocket Game</title>
   </head>
   <body>
     Players:
-    <ul id="messages"></ul>
+    <ul id="name"></ul>
     <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+      <input id="playerName" autocomplete="off" /><button>Go!</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -17,7 +16,7 @@
     var socket = io();
     $('form').submit(function(e){
       e.preventDefault(); // prevents page reloading
-      socket.emit('chat message', $('#m').val());
+      socket.emit('newPlayer', $('#playerName').val());
       $('#m').val('');
       return false;
     });
